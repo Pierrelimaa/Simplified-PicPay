@@ -1,13 +1,13 @@
-package picpay.Picpaychallenge.repository
+package picpay.Picpaychallenge.services
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Repository
 import picpay.Picpaychallenge.domain.User.CustomerUser
-import picpay.Picpaychallenge.repository.interfaces.BalanceRepository
+import picpay.Picpaychallenge.services.interfaces.BalanceService
 import picpay.Picpaychallenge.useCases.balance.BalanceResponse
 
 @Repository
-class BalanceRepositoryImpl(): BalanceRepository {
+class BalanceServiceImpl(): BalanceService {
 
     companion object{
         val logger = LoggerFactory.getLogger(javaClass)

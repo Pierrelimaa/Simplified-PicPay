@@ -4,14 +4,14 @@ package picpay.Picpaychallenge.useCases.balance
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import picpay.Picpaychallenge.domain.User.isValidDocument
-import picpay.Picpaychallenge.repository.interfaces.BalanceRepository
-import picpay.Picpaychallenge.repository.interfaces.UserRepository
+import picpay.Picpaychallenge.services.interfaces.BalanceService
+import picpay.Picpaychallenge.services.interfaces.UserService
 import java.math.BigDecimal
 
 @Component
 class BalanceUseCaseImpl(
-    val balanceRepository: BalanceRepository,
-    val userRepository: UserRepository
+    val balanceService: BalanceService,
+    val userService: UserService
 
 ) {
     companion object {
@@ -25,7 +25,7 @@ class BalanceUseCaseImpl(
             return null
         }
 
-        val customer = userRepository.retrieveUser(document)
+        val customer = userService.retrieveUser(document)
 
 
         return BalanceResponse(BigDecimal(5000))

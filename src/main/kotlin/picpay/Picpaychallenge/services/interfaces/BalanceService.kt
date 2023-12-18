@@ -1,8 +1,8 @@
-package picpay.Picpaychallenge.repository.interfaces
+package picpay.Picpaychallenge.services.interfaces
 
 import picpay.Picpaychallenge.useCases.balance.BalanceResponse
 
-interface BalanceRepository{
+interface BalanceService{
 
     fun getBalance(): BalanceResponse?
 }

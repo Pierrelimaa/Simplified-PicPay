@@ -6,15 +6,6 @@ open class User(
     open val email: String,
     open val password: String
 ) {
-
-    fun validateDocument() {
-        when (document.length){
-            11 -> return
-            14 -> return
-            else -> throw RuntimeException("Invalid cpf format")
-        }
-
-    }
 }
 
 fun String.isValidDocument(): Boolean {
