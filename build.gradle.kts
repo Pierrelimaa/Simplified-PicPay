@@ -37,6 +37,10 @@ dependencies {
 //	Database
 	implementation("com.h2database:h2")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+//	DevTools
+	implementation("org.springframework.boot:spring-boot-devtools:3.2.0")
+
 }
 
 dependencyManagement {
