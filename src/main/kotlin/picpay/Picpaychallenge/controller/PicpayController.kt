@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import picpay.Picpaychallenge.useCases.UseCases
-import picpay.Picpaychallenge.useCases.balance.toBalanceDto
 
 @RestController
 @RequestMapping("/picpay/")
@@ -26,6 +25,6 @@ class PicpayController(
         @RequestHeader("password") password: String,
     ): BalanceDto? {
         val balance = useCases.retrieveBalance(document, password)
-        return balance?.toBalanceDto()
+        return BalanceDto(balance.user.name, balance.amount)
     }
 }
