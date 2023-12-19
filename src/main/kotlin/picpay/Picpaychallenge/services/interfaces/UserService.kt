@@ -4,5 +4,5 @@ import picpay.Picpaychallenge.domain.User.User
 
 interface UserService {
 
-    fun retrieveUser(document: String): User?
+    fun retrieveUser(document: String): User
 }

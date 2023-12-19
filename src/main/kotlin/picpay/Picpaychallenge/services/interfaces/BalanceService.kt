@@ -4,7 +4,7 @@ import picpay.Picpaychallenge.useCases.balance.BalanceResponse
 
 interface BalanceService{
 
-    fun getBalance(): BalanceResponse?
+    fun getBalance(document: String): BalanceResponse
 }
 
 
