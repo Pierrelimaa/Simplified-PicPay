@@ -17,7 +17,7 @@ open class User(
         return try {
         when(document.length){
             11 -> CustomerUser(name, document, email, password)
-            14 -> ShopkeeperUser(name, document, email, password)
+            14 -> MerchantUser(name, document, email, password)
             else -> throw InvalidDocumentException("Invalid document format")
         }
         }

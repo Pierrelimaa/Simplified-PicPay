@@ -1,6 +1,6 @@
 package picpay.Picpaychallenge.domain.User
 
-data class ShopkeeperUser(
+data class MerchantUser(
     override val name : String,
     override val document: String,
     override val email: String,

@@ -5,13 +5,11 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import picpay.Picpaychallenge.domain.Account
 import picpay.Picpaychallenge.domain.Exception.IncorrectPasswordException
-import picpay.Picpaychallenge.services.interfaces.BalanceService
-import picpay.Picpaychallenge.services.interfaces.UserService
+import picpay.Picpaychallenge.services.interfaces.DatabaseService
 
 @Component
 class BalanceUseCaseImpl(
-    val balanceService: BalanceService,
-    val userService: UserService,
+    val databaseService: DatabaseService
 
     ) {
     companion object {
@@ -22,11 +20,11 @@ class BalanceUseCaseImpl(
         logger.info("Retrieving document: $document")
 
 
-        val user = userService.retrieveUser(document)
+        val user = databaseService.retrieveUser(document)
         logger.info("User ${user.invoke()}")
 
         val userBalance = if (user.isPasswordCorrect(password)) {
-            balanceService.getBalance(user.document).also {
+            databaseService.getBalance(user.document).also {
             logger.info("Balance found ")}
         } else {
             logger.error("Incorrect password")
