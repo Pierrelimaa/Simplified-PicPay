@@ -19,15 +19,15 @@ class BalanceUseCaseImpl(
     }
 
     operator fun invoke(document: String, password: String): Account {
-        logger.info("Retrieving document: $document data")
+        logger.info("Retrieving document: $document")
 
 
         val user = userService.retrieveUser(document)
-        logger.debug("User ${user.invoke()}")
+        logger.info("User ${user.invoke()}")
 
         val userBalance = if (user.isPasswordCorrect(password)) {
-            balanceService.getBalance(user.document)
-
+            balanceService.getBalance(user.document).also {
+            logger.info("Balance found ")}
         } else {
             logger.error("Incorrect password")
             throw IncorrectPasswordException("Password is not correct")

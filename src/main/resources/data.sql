@@ -13,9 +13,12 @@ CREATE TABLE IF NOT EXISTS account_tb (
     balance DECIMAL
 );
 
-INSERT INTO user_tb (name, document, email, password) VALUES ('maria',  '00011122244','maria@gmail.com', '1234');
+INSERT INTO user_tb (name, document, email, password) VALUES ('Maria',  '00011122244','maria@gmail.com', '1234');
 INSERT INTO account_tb (document, balance) VALUES ('00011122244', 15000);
 
 
-INSERT INTO user_tb (name, document, email, password) VALUES ('pedro',  '00011122233','pedro@gmail.com', 'abc1234');
+INSERT INTO user_tb (name, document, email, password) VALUES ('Pedro',  '00011122233','pedro@gmail.com', 'abc1234');
 INSERT INTO account_tb (document, balance) VALUES ('00011122233', 2000);
+
+INSERT INTO user_tb (name, document, email, password) VALUES ('Americanas',  '12345678910001','americanas@gmail.com', 'abcd');
+INSERT INTO account_tb (document, balance) VALUES ('12345678910001', 20000);
