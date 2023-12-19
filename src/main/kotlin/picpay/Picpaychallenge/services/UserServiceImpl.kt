@@ -14,17 +14,5 @@ class UserServiceImpl(
     companion object{
         val logger = LoggerFactory.getLogger(javaClass)
     }
-    override fun retrieveUser(document: String): User {
 
-        val customer =  try {
-            userRepository.findByDocument(document)
-        }
-        catch (ex: Exception){
-            logger.error("User not found")
-            throw Exception("User not found")
-        }
-
-        return User(name = customer.name, document = customer.document, email = customer.email, password = customer.password)
-
-    }
 }
