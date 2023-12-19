@@ -22,15 +22,21 @@ repositories {
 extra["springCloudVersion"] = "2023.0.0"
 
 dependencies {
-//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-	implementation("org.slf4j:slf4j-api:2.0.9")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("com.h2database:h2:2.2.224")
 
+//	FeignClient
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+//	Logs
+	implementation("org.slf4j:slf4j-api:2.0.9")
+
+//	Database
+	implementation("com.h2database:h2")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 }
 
 dependencyManagement {
