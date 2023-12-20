@@ -1,6 +1,7 @@
 package picpay.Picpaychallenge.repository.entities
 
 import jakarta.persistence.*
+import picpay.Picpaychallenge.domain.User.User
 
 @Entity
 @Table(name = "user_tb")
@@ -9,7 +10,7 @@ data class UserEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
-    val userId: Long,
+    val userId: Long?,
 
     @Column(name = "name", length = 50, nullable = false)
     val name: String,

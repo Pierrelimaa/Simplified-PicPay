@@ -2,6 +2,7 @@ package picpay.Picpaychallenge.domain.User
 
 import org.slf4j.LoggerFactory
 import picpay.Picpaychallenge.domain.Exception.InvalidDocumentException
+import picpay.Picpaychallenge.repository.entities.UserEntity
 
 open class User(
     open val name : String,
@@ -31,13 +32,9 @@ open class User(
     fun isPasswordCorrect(password: String): Boolean{
         return password == this.password
     }
+    
+    fun toUserEntity() = UserEntity(
+        userId = null, name = name, document = document, email = email, password = password
+    )
 
-}
-
-fun String.isValidDocument(): Boolean {
-    return when (length){
-        11 -> true
-        14 -> true
-        else -> throw RuntimeException("Invalid cpf format")
-    }
 }

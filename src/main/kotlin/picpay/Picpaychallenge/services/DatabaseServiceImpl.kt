@@ -5,13 +5,15 @@ import org.springframework.stereotype.Component
 import picpay.Picpaychallenge.domain.User.User
 import picpay.Picpaychallenge.repository.BalanceRepository
 import picpay.Picpaychallenge.repository.UserRepository
+import picpay.Picpaychallenge.repository.entities.UserEntity
 import picpay.Picpaychallenge.services.interfaces.DatabaseService
 import picpay.Picpaychallenge.useCases.balance.BalanceResponse
+import java.util.*
 
 @Component
 class DatabaseServiceImpl(
     private val balanceRepository: BalanceRepository,
-    private val userRepository: UserRepository,
+    private val userRepository: UserRepository
 ) : DatabaseService {
 
     companion object {
@@ -23,7 +25,7 @@ class DatabaseServiceImpl(
         val customer = try {
             userRepository.findByDocument(document)
         } catch (ex: Exception) {
-            UserServiceImpl.logger.error("User not found")
+            logger.error("User not found")
             throw Exception("User not found")
         }
 
@@ -45,5 +47,16 @@ class DatabaseServiceImpl(
         } else {
             throw Exception("Balance not found for document $document")
         }
+    }
+
+    override fun insertUser(payload: User): Optional<UserEntity> {
+
+        return try{ userRepository.save(payload.toUserEntity())
+        }
+        catch (ex: Exception){
+            logger.error("Error while saving user ${payload.document} | ex: ${ex.cause}")
+            return Optional.empty()
+        }
+
     }
 }
