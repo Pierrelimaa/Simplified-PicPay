@@ -2,14 +2,13 @@ package picpay.Picpaychallenge.services
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
-import picpay.Picpaychallenge.domain.User.User
 import picpay.Picpaychallenge.repository.UserRepository
-import picpay.Picpaychallenge.services.interfaces.UserService
+import picpay.Picpaychallenge.services.interfaces.AccountService
 
 @Component
-class UserServiceImpl(
+class AccountServiceImpl(
     val userRepository: UserRepository
-): UserService {
+): AccountService {
 
     companion object{
         val logger = LoggerFactory.getLogger(javaClass)
