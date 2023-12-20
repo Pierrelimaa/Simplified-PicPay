@@ -9,7 +9,7 @@ data class AccountEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", nullable = false)
-    val accountId: Int,
+    val accountId: Long?,
     @Column(name = "document", unique = true)
     val document: String,
     @Column(name = "balance")

@@ -9,5 +9,5 @@ import java.util.*
 interface UserRepository: JpaRepository<UserEntity, Long>{
 
     fun findByDocument(document: String): UserEntity
-    fun save(newUser: UserEntity): Optional<UserEntity>
+    fun save(newAccount: UserEntity): Optional<UserEntity>
 }

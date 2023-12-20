@@ -19,7 +19,7 @@ class PersistUserUseCaseImpl(
 
         val persistUser = databaseService.insertUser(newUser)
         return when {
-            persistUser.isPresent -> ResponseEntity("User ${payload.document} created", HttpStatus.CREATED)
+            persistUser.isPresent -> ResponseEntity("User created - name:${persistUser.get().name} | document:${persistUser.get().document} ", HttpStatus.CREATED)
             else -> ResponseEntity<String>("" ,HttpStatus.BAD_REQUEST)
         }
     }
