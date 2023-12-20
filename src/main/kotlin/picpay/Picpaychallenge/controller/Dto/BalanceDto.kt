@@ -1,4 +1,4 @@
-package picpay.Picpaychallenge.controller
+package picpay.Picpaychallenge.controller.Dto
 
 import java.math.BigDecimal
 

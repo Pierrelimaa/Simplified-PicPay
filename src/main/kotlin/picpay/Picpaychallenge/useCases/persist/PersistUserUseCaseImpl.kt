@@ -3,10 +3,9 @@ package picpay.Picpaychallenge.useCases.persist
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
-import picpay.Picpaychallenge.controller.UserDto
+import picpay.Picpaychallenge.controller.Dto.UserDto
 import picpay.Picpaychallenge.domain.User.User
 import picpay.Picpaychallenge.services.interfaces.DatabaseService
-import java.util.*
 
 @Component
 class PersistUserUseCaseImpl(
