@@ -31,6 +31,6 @@ class BalanceUseCaseImpl(
             throw IncorrectPasswordException("Password is not correct")
         }
 
-        return Account(user, userBalance.amount)
+        return Account(user.document, userBalance.amount)
     }
 }
