@@ -4,15 +4,20 @@ import picpay.Picpaychallenge.domain.User.User
 import java.math.BigDecimal
 
 data class Account(
-    val user: User,
+    val userDocument: String,
     val amount: BigDecimal
 ){
 
-    fun getBalance(){
-        TODO()
+    fun hasAmountToTrasfer(sendAmount: BigDecimal): Boolean{
+        return amount >= sendAmount
     }
 
-    fun tranfer(){
-        TODO()
+    fun subtractAmount(takenAmount: BigDecimal): Account {
+        val newAmount = amount.subtract(takenAmount)
+        return Account(userDocument, newAmount)
+    }
+    fun addAmount(transferAmount: BigDecimal): Account{
+        val newAmount = amount.plus(transferAmount)
+        return Account(userDocument, newAmount)
     }
 }
