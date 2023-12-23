@@ -1,6 +1,5 @@
 package picpay.Picpaychallenge.domain
 
-import picpay.Picpaychallenge.domain.User.User
 import java.math.BigDecimal
 
 data class Account(
