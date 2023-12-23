@@ -1,6 +1,7 @@
 package picpay.Picpaychallenge.repository.entities
 
 import jakarta.persistence.*
+import picpay.Picpaychallenge.domain.Account
 import java.math.BigDecimal
 
 @Entity
@@ -14,5 +15,10 @@ data class AccountEntity(
     val document: String,
     @Column(name = "balance")
     val balance: BigDecimal
-)
+) {
+    fun toAccount(): Account = Account(
+        userDocument = document, amount = balance
+
+    )
+}
 
