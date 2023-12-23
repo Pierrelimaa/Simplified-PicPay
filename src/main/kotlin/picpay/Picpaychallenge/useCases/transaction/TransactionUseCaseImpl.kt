@@ -8,7 +8,7 @@ import picpay.Picpaychallenge.services.interfaces.dtos.TransferDTO
 import picpay.Picpaychallenge.useCases.balance.BalanceUseCaseImpl
 
 @Component
-class TransactionImpl(
+class TransactionUseCaseImpl(
     val databaseService: DatabaseService,
     val accountService: AccountService,
     val balanceUseCase: BalanceUseCaseImpl
