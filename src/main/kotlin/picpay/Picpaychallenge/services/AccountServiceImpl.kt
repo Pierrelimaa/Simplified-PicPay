@@ -4,15 +4,16 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import picpay.Picpaychallenge.domain.Account
 import picpay.Picpaychallenge.repository.BalanceRepository
-import picpay.Picpaychallenge.repository.UserRepository
-import picpay.Picpaychallenge.services.client.AuthorizerClient
+import picpay.Picpaychallenge.services.client.Authorizer.AuthorizerClient
+import picpay.Picpaychallenge.services.client.Notification.NotificationClient
 import picpay.Picpaychallenge.services.interfaces.AccountService
 import picpay.Picpaychallenge.services.interfaces.dtos.TransferDTO
 
 @Component
 class AccountServiceImpl(
     val balanceRepository: BalanceRepository,
-    val authorizerClient: AuthorizerClient
+    val authorizerClient: AuthorizerClient,
+    val notificationClient: NotificationClient
 ): AccountService {
 
     companion object{
@@ -45,6 +46,9 @@ class AccountServiceImpl(
         logger.info("Making transaction from ${senderAccount.userDocument} to ${receiverAccount.userDocument}")
         makeTransfer(senderAccount, transferInput, receiverAccount)
 
+// Notifica cliente
+        logger.info("Notify client ${receiverAccount.userDocument}")
+        notificationClient.noitifyClient(receiverAccount.userDocument)
     }
 
     private fun makeTransfer(
