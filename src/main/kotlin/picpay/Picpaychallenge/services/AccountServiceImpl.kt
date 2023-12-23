@@ -5,12 +5,14 @@ import org.springframework.stereotype.Component
 import picpay.Picpaychallenge.domain.Account
 import picpay.Picpaychallenge.repository.BalanceRepository
 import picpay.Picpaychallenge.repository.UserRepository
+import picpay.Picpaychallenge.services.client.AuthorizerClient
 import picpay.Picpaychallenge.services.interfaces.AccountService
 import picpay.Picpaychallenge.services.interfaces.dtos.TransferDTO
 
 @Component
 class AccountServiceImpl(
-    val balanceRepository: BalanceRepository
+    val balanceRepository: BalanceRepository,
+    val authorizerClient: AuthorizerClient
 ): AccountService {
 
     companion object{
@@ -30,6 +32,14 @@ class AccountServiceImpl(
 // Buscar conta do destinatario
         logger.info("Recovery balance of receiver")
         val receiverAccount = balanceRepository.getBalanceByDocument(transferInput.receiverDocument)?.toAccount() ?: return
+
+// Consulta serviço de autorização externo
+        val authorizerTransaction =  authorizerClient.authorizeTransaction()
+        logger.info("Autohorizer service resonse: $authorizerTransaction")
+        if (authorizerTransaction.message.isNullOrBlank()) {
+            logger.error("Transaction not allowed by authorizer, try again in a few minutes")
+            return
+        }
 
 // Realizar transferencia
         logger.info("Making transaction from ${senderAccount.userDocument} to ${receiverAccount.userDocument}")
