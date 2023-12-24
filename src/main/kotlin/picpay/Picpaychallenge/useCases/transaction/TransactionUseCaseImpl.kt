@@ -2,10 +2,10 @@ package picpay.Picpaychallenge.useCases.transaction
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
-import picpay.Picpaychallenge.domain.Enum.UserTypeEnum
-import picpay.Picpaychallenge.domain.User.User
 import picpay.Picpaychallenge.services.interfaces.AccountService
 import picpay.Picpaychallenge.services.interfaces.DatabaseService
+import picpay.Picpaychallenge.services.interfaces.TransactionService
+import picpay.Picpaychallenge.services.interfaces.dtos.TransactionDto
 import picpay.Picpaychallenge.services.interfaces.dtos.TransferDTO
 import picpay.Picpaychallenge.useCases.balance.BalanceUseCaseImpl
 
@@ -14,6 +14,7 @@ class TransactionUseCaseImpl(
     val databaseService: DatabaseService,
     val accountService: AccountService,
     val balanceUseCase: BalanceUseCaseImpl,
+    val transactionService: TransactionService,
 ) {
 
     companion object {
@@ -41,10 +42,14 @@ class TransactionUseCaseImpl(
         )
         accountService.transfer(transferInput = transferInput)
 
+        val input = TransactionDto(
+            senderDocument = transactionInput.senderDocument,
+            receiverDocument = transactionInput.receiverDocument,
+            transferedAmount = transactionInput.transactionAmount
+        )
+        transactionService.persistTransaction(persistTransactionInput = input)
 
     }
-
-
 
 
 }
