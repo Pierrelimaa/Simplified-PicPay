@@ -12,3 +12,35 @@ The follows requisites was proposed to this challenge:
 - After the transfer be completed, the recipient user must receive a notification sended by a notification service. For this service I used this mock: https://run.mocky.io/v3/54dc2cf1-3add-45b5-b5a9-6bf7e7f1f4a6.
 
 
+APIs:
+
+Create User: /sign-in/create-user
+
+```
+curl --location 'http://localhost:8080/sign-in/create-user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"Paulo",
+    "document":"01234567891",
+    "email":"paulo@gmail.com",
+    "password": "001122"
+}'
+```
+
+Get Balance: /picpay/balance
+ 
+```
+curl --location 'http://localhost:8080/picpay/balance' \
+--header 'document: 00011122244' \
+--header 'password: 1234'
+```
+
+Make Transaction: /picpay/transaction
+
+```
+curl --location 'http://localhost:8080/picpay/transaction?senderDocument=00011122233&password=abc1234&receiverDocument=01234567891' \
+--header 'Content-Type: application/json' \
+--data '{
+    "amount": 200.00
+}'
+```
