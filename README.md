@@ -15,7 +15,7 @@ The follows requisites was proposed to this challenge:
 APIs:
 
 Create User: /sign-in/create-user
-curl: 
+
 ```
 curl --location 'http://localhost:8080/sign-in/create-user' \
 --header 'Content-Type: application/json' \
@@ -28,7 +28,7 @@ curl --location 'http://localhost:8080/sign-in/create-user' \
 ```
 
 Get Balance: /picpay/balance
-curl: 
+ 
 ```
 curl --location 'http://localhost:8080/picpay/balance' \
 --header 'document: 00011122244' \
@@ -36,7 +36,6 @@ curl --location 'http://localhost:8080/picpay/balance' \
 ```
 
 Make Transaction: /picpay/transaction
-curl:
 
 ```
 curl --location 'http://localhost:8080/picpay/transaction?senderDocument=00011122233&password=abc1234&receiverDocument=01234567891' \
