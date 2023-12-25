@@ -28,7 +28,7 @@ class BalanceUseCaseImpl(
             logger.info("Balance found ")}
         } else {
             logger.error("Incorrect password")
-            throw IncorrectPasswordException("Password is not correct")
+            throw IncorrectPasswordException(message = "Password is not correct")
         }
 
         return Account(user.document, userBalance.amount)
