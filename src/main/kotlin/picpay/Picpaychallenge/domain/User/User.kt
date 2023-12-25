@@ -17,16 +17,11 @@ open class User(
         private val logger = LoggerFactory.getLogger(javaClass)
     }
     operator fun invoke(): User? {
-        return try {
-        when(document.length){
+
+        return when(document.length){
             11 -> CustomerUser(name, document, email, password, UserTypeEnum.COMMOM)
             14 -> MerchantUser(name, document, email, password, UserTypeEnum.MERCHANT)
-            else -> throw InvalidDocumentException("Invalid document format")
-        }
-        }
-            catch(ex: Exception){
-                logger.error("Document: $document has an invalid format")
-                return null
+            else -> throw InvalidDocumentException(message = "Invalid document format")
         }
 
     }
